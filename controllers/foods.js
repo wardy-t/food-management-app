@@ -3,6 +3,10 @@ const router = express.Router();
 
 const User = require('../models/user');
 
+router.get('/new', async (req, res) => {
+    res.render('foods/new.ejs');
+});
+
 router.get('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
@@ -19,7 +23,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:foodId', async (req, res) => {
     try {
-        const currentUser = await User.findbyId(req.session.user._id);
+        const currentUser = await User.findById(req.session.user._id);
         const food = currentUser.foods.id(req.params.foodId);
 
         res.render('foods/show.ejs', {
@@ -31,13 +35,11 @@ router.get('/:foodId', async (req, res) => {
     }
 });
 
-router.get('/new', async (req, res) => {
-    res.render('foods/new.ejs');
-});
+
 
 router.post('/', async (req, res) => {
     try {
-        const currentUser = await User.findbyId(req.session.user._id);
+        const currentUser = await User.findById(req.session.user._id);
         
         currentUser.foods.push(req.body);
 
@@ -52,7 +54,7 @@ router.post('/', async (req, res) => {
 
 router.get('/:foodId/edit', async (req, res) => {
     try {
-        const currentUser = await User.findbyId(req.session.user._id);
+        const currentUser = await User.findById(req.session.user._id);
         const food = currentUser.foods.id(req.params.foodId);
 
         res.render('foods/edit.ejs', {
