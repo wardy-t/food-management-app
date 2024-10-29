@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Food</title>
+</head>
+<body>
+    <%- include('../partials/_navbar.ejs') %>
+    <h1>Add Food</h1>
+
+    <form action="/users/<%= user._id %>/foods" method="POST">
+        <div>
+            <label for="food">Food:</label>
+            <input type="text" name="food" id="food">
+        </div>
+
+        <div>
+            <label for="amount">Amount:</label>
+            <input type="text" name="amount" id="amount">
+        </div>
+
+        <div>
+            <label for="foodGroup">Food Group:</label>
+            <input type="text" name="foodGroup" id="foodGroup">
+        </div>
+
+        <div>
+            <label for="useByDate">Use By Date:</label>
+            <input type="text" name="useByDate" id="useByDate">
+        </div>
+
+        <div>
+            <label for="calories">Calories:</label>
+            <input type="text" name="calories" id="calories">
+        </div>
+
+        <div>
+            <label for="dietaryReqs">Dietary Requirements:</label>
+            <select name="dietaryReqs" id="dietaryReqs">
+                <option value="none">None</option>
+                <option value="vegetarian">Vegetarian</option>
+                <option value="vegan">Vegan</option>
+                <option value="lactoseFree">Lactose Free</option>
+                <option value="containsNuts">Contains Nuts</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Add Food</button>
+        </div> 
+    </form>
+    
+</body>
+</html>
