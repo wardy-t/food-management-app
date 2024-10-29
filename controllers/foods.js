@@ -10,6 +10,7 @@ router.get('/new', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
+        console.log("Current User Foods:", currentUser.foods);
 
         res.render('foods/index.ejs', {
             foods: currentUser.foods,
@@ -71,7 +72,7 @@ router.put('/:foodId', async (req, res) => {
         const currentUser = await User.findById(req.session.user._id);
         const food = currentUser.foods.id(req.params.foodId);
 
-        application.set(req.body);
+        food.set(req.body);
 
         await currentUser.save();
 
@@ -82,7 +83,7 @@ router.put('/:foodId', async (req, res) => {
     }
 });
 
-router.delete('/:applicationId', async (req, res) => {
+router.delete('/:foodId', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
         currentUser.foods.id(req.params.foodId).deleteOne();
