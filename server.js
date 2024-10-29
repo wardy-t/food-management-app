@@ -50,7 +50,7 @@ app.use(isSignedIn);
 
 //protected routes
 
-app.use('/users/:userId/foods', applicationsController);
+app.use('/users/:userId/foods', foodsController);
 
 app.listen(port, () => {
     console.log(`The express app is ready on port ${port}!`);

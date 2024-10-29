@@ -8,7 +8,7 @@ const foodSchema = new mongoose.Schema({
     calories:   { type: String },
     DietaryReqs: {
         type: String,
-        enum: [none, lactose-free, vegan, vegetarian],
+        enum: ['none', 'lactose-free', 'vegan', 'vegetarian'],
     }
 });
 
@@ -18,6 +18,6 @@ const userSchema = mongoose.Schema({
     foods: [foodSchema],
 });
 
-const user = mongoose.model('User', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
