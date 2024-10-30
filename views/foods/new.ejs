@@ -3,41 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Add Food</title>
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Add Food</h1>
+
+<div class="container mt-5">
+    <h1 class="text-center"></h1class>Add Food</h1>
 
     <form action="/users/<%= user._id %>/foods" method="POST">
-        <div>
+        <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" name="name" id="name">
+            <input type="text" class="form-control" name="name" id="name">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="amount">Amount:</label>
-            <input type="text" name="amount" id="amount">
+            <input type="text" class="form-control" name="amount" id="amount">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="foodGroup">Food Group:</label>
-            <input type="text" name="foodGroup" id="foodGroup">
+            <input type="text" class="form-control" name="foodGroup" id="foodGroup">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="useByDate">Use By Date:</label>
-            <input type="text" name="useByDate" id="useByDate">
+            <input type="text" class="form-control" name="useByDate" id="useByDate">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="calories">Calories:</label>
-            <input type="text" name="calories" id="calories">
+            <input type="text" class="form-control" name="calories" id="calories">
         </div>
 
-        <div>
+        <div class="form-group">
             <label for="dietaryReqs">Dietary Requirements:</label>
-            <select name="dietaryReqs" id="dietaryReqs">
+            <select class="form-control" name="dietaryReqs" id="dietaryReqs">
                 <option value="none">None</option>
                 <option value="vegetarian">Vegetarian</option>
                 <option value="vegan">Vegan</option>
@@ -46,9 +49,12 @@
             </select>
         </div>
         <div>
-            <button type="submit">Add Food</button>
+            <button type="submit" class="btn btn-primary">Add Food</button>
         </div> 
     </form>
-    
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

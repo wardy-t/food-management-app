@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Your Fridge</title>
 </head>
 <body>
-    <%- include('../partials/_navbar.ejs') %>
-    <a href="/users/<%= user._id %>/foods/new">Add Food</a>
+    <body class="bg-light">
+        <%- include('../partials/_navbar.ejs') %>
+        <div class="container mt-5">
+            <h1 class="text-center text-info">Your Food</h1>
+            <a href="/users/<%= user._id %>/foods/new" class="btn btn-primary mb-3">Add Food</a>
+            
+            <ul class="list-group">
+                <% foods.forEach((food) => { %>
+                    <li class="list-group-item shadow-sm">
+                        <a href="/users/<%= user._id %>/foods/<%= food._id %>" class="text-decoration-none">
+                            <h5 class="m-0"><%= food.name %></h5>
+                        </a>
+                    </li>
+                <% }); %>
+            </ul>
+        </div>
 
-    <ul>
-        <% foods.forEach((food) => { %>
-            <li>
-                <a href="/users/<%= user._id %>/foods/<%= food._id %>">
-                    <%= food.name %>
-                <a/>
-                
-            </li>
-        <% }); %>
-    </ul>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>

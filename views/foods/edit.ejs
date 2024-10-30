@@ -3,53 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Edit Food</title>
 </head>
-<body>
+<body class="bg-light">
     <%- include('../partials/_navbar.ejs') %>
-    <h1>Edit <% `${food.name}` %></h1>
+    <div class="container mt-5">
+        <h1 class="text-center text-info">Edit <%= food.name %></h1>
 
+        <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
+            <div class="form-group">
+                <label for="food">Food:</label>
+                <input type="text" name="name" id="food" class="form-control" value="<%= food.name %>" required>
+            </div>
 
-    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=PUT" method="POST">
-        <div>
-            <label for="food">Food:</label>
-            <input type="text" name="food" id="food" value="<%= food.name %>">
-        </div>
+            <div class="form-group">
+                <label for="amount">Amount:</label>
+                <input type="text" name="amount" id="amount" class="form-control" value="<%= food.amount %>" required>
+            </div>
 
-        <div>
-            <label for="amount">Amount:</label>
-            <input type="text" name="amount" id="amount" value="<%= food.amount %>">
-        </div>
+            <div class="form-group">
+                <label for="foodGroup">Food Group:</label>
+                <input type="text" name="foodGroup" id="foodGroup" class="form-control" value="<%= food.foodGroup %>" required>
+            </div>
 
-        <div>
-            <label for="foodGroup">Food Group:</label>
-            <input type="text" name="foodGroup" id="foodGroup" value="<%= food.foodGroup %>">
-        </div>
+            <div class="form-group">
+                <label for="useByDate">Use By Date:</label>
+                <input type="text" name="useByDate" id="useByDate" class="form-control" value="<%= food.useByDate %>" required>
+            </div>
 
-        <div>
-            <label for="useByDate">Use By Date:</label>
-            <input type="text" name="useByDate" id="useByDate" value="<%= food.useByDate %>">
-        </div>
+            <div class="form-group">
+                <label for="calories">Calories:</label>
+                <input type="text" name="calories" id="calories" class="form-control" value="<%= food.calories %>" required>
+            </div>
 
-        <div>
-            <label for="calories">Calories:</label>
-            <input type="text" name="calories" id="calories" value="<%= food.calories %>">
-        </div>
+            <div class="form-group">
+                <label for="dietaryReqs">Dietary Requirements:</label>
+                <select name="dietaryReqs" id="dietaryReqs" class="form-control" required>
+                    <option value="none" <%= food.dietaryReqs === "none" ? "selected" : "" %>>None</option>
+                    <option value="vegetarian" <%= food.dietaryReqs === "vegetarian" ? "selected" : "" %>>Vegetarian</option>
+                    <option value="vegan" <%= food.dietaryReqs === "vegan" ? "selected" : "" %>>Vegan</option>
+                    <option value="lactose-free" <%= food.dietaryReqs === "lactose-free" ? "selected" : "" %>>Lactose Free</option>
+                    <option value="contains-nuts" <%= food.dietaryReqs === "contains-nuts" ? "selected" : "" %>>Contains Nuts</option>
+                </select>
+            </div>
 
-        <div>
-            <label for="dietaryReqs">Dietary Requirements:</label>
-            <select name="dietaryReqs" id="dietaryReqs">
-                <option value="none" <%= food.dietaryReqs === "none" ? "selected" : "" %>>None</option>
-                <option value="vegetarian" <%= food.dietaryReqs === "vegetarian" ? "selected" : "" %>>Vegetarian</option>
-                <option value="vegan" <%= food.dietaryReqs === "vegan" ? "selected" : "" %>>Vegan</option>
-                <option value="lactoseFree" <%= food.dietaryReqs === "lactoseFree" ? "selected" : "" %>>Lactose Free</option>
-                <option value="containsNuts" <%= food.dietaryReqs === "containsNuts" ? "selected" : "" %>>Contains Nuts</option>
-            </select>
-        </div>
-        <div>
-            <button type="submit">Update Food</button>
-        </div> 
-    </form>
-    
+            <button type="submit" class="btn btn-primary btn-block">Update Food</button>
+        </form>
+    </div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
