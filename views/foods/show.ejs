@@ -7,8 +7,20 @@
 </head>
 <body>
     <%- include('../partials/_navbar.ejs') %>
+    
     <h1>Your Food</h1>
 
+    <p>Name: <%=food.name%> </p>
+
+    <p>Amount: <%=food.amount%> </p>
+
+    <p>Use By Date: <%=food.useByDate%> </p>
+
+    <p>Food Group: <%=food.foodGroup%> </p>
+
+    <p>Calories: <%=food.calories%> </p>
+
+    <p>Dietary requirements: <%=food.dietaryReqs%> </p>
 
     <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit">Edit Food</a>
 

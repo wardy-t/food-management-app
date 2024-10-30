@@ -6,9 +6,9 @@ const foodSchema = new mongoose.Schema({
     useByDate:  { type: String, required: true },
     foodGroup:  { type: String },
     calories:   { type: String },
-    DietaryReqs: {
+    dietaryReqs: {
         type: String,
-        enum: ['none', 'lactose-free', 'vegan', 'vegetarian'],
+        enum: ['none', 'vegetarian', 'vegan', 'lactose-free', 'contains-nuts'],
     }
 });
 

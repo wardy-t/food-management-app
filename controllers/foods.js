@@ -40,6 +40,7 @@ router.get('/:foodId', async (req, res) => {
 
 router.post('/', async (req, res) => {
     try {
+        console.log(req.body)
         const currentUser = await User.findById(req.session.user._id);
         
         currentUser.foods.push(req.body);
