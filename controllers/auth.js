@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
+
 const User = require('../models/user.js');
 
 router.get('/sign-up', (req, res) => {
@@ -22,6 +24,10 @@ router.post('/sign-up', async (req, res) => {
         const userInDatabase = await User.findOne({ username: req.body.username });
         if (userInDatabase) {
             return res.send('Username already taken.');
+    }
+
+    if (!passwordPattern.test(req.body.password)) {
+        return res.send('Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a symbol.');
     }
 
     if (req.body.password !== req.body.confirmPassword) {
