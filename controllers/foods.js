@@ -10,7 +10,6 @@ router.get('/new', async (req, res) => {
 router.get('/', async (req, res) => {
     try {
         const currentUser = await User.findById(req.session.user._id);
-        console.log("Current User Foods:", currentUser.foods);
 
         res.render('foods/index.ejs', {
             foods: currentUser.foods,

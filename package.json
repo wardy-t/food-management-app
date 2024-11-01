@@ -6,6 +6,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
+"engines": {
+  "node": "16.x",
+  "npm": "7.x"
+},
   "author": "",
   "license": "ISC",
   "description": "",
@@ -15,6 +19,7 @@
     "ejs": "^3.1.10",
     "express": "^4.21.1",
     "express-session": "^1.18.1",
+    "heroku": "^9.3.2",
     "method-override": "^3.0.0",
     "mongoose": "^8.7.3",
     "morgan": "^1.10.0"
