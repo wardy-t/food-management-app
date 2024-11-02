@@ -5,7 +5,11 @@ Project Description
 
 Say hello to Freezy!
 
+![alt text](image.png)
+
 Freezy is my food management app. It is designed to help you keep track of what food is in your fridge, when it is going out of date, what calories your food contains and more.
+
+![alt text](image-2.png)
 
 I built Freezy unassisted for Project 2 of my General Assembly Software Engineering Bootcamp, between 28/10/24 - 1/11/24 while also working full time. 
 The app demonstrates my ability to build an MVC style codebase with user authentication and CRUD functionalities while storing user data in MongoDB.
@@ -28,47 +32,23 @@ GitHub Link: https://github.com/wardy-t/food-management-app.git
 
 Technologies Used
 
-Node.js
-Express
-EJS (Embedded JavaScript)
-MongoDB
-Mongoose
-Method-Override
-Morgan
-Bcrypt
-Express-session
-dotenv
-Heroku
+Node.js;
+Express;
+EJS (Embedded JavaScript);
+MongoDB;
+Mongoose;
+Method-Override;
+Morgan;
+Bcrypt;
+Express-session;
+dotenv;
+Heroku;
 GitHub
+
 
 Build/Code Process
 
 I started by downloading my required technologies middlewares through the terminal and then went about building my server.js and connecting to port. Most of the middlewares concerned aspects of authentication or connecting with my database. 
-
-const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
-const methodOverride = require('method-override');
-const morgan = require('morgan');
-const session = require('express-session');
-const port = process.env.PORT ? process.env.PORT : '3000';
-mongoose.connect(process.env.MONGODB_URI);
-mongoose.connection.on('connected', () => {
-    console.log(`Connected to MongoDB ${mongoose.connection.name}`);
-});
-app.use(express.urlencoded({ extended: false}));
-app.use(methodOverride('_method'));
-app.use(morgan('dev'));
-app.use(
-    session({
-        secret: process.env.SESSION_SECRET,
-        resave: false,
-        saveUninitialized: true,
-    })
-);
-app.listen(port, () => {
-    console.log(`The express app is ready on port ${port}!`);
-});
 
 I created my .env file to link to my MongoDB cluster and a session secret cookie, as well as a .gitignore file to keep them and my node_modules safe, and then went about building my Schema and homepage. 
 I was originally planning to challenge myself to use referencing with my Schema as I have used it less but quickly changed my tune when I realised how much coding I had to do in five days and reverted to tried and tested embedded! 
@@ -97,53 +77,11 @@ were probably not directly linked.
 Eventually I established that I had made two separate errors on the Schema - I had changed the ‘food’ object in my Schema to ‘name’ but had not amended this in parts of my code. Also I had made a classic capital letter typo in my 
 ‘dietary requirements’ object.
 
-
-const mongoose = require('mongoose');
-const foodSchema = new mongoose.Schema({
-    food:       { type: String, required: true },
-    amount:     { type: String, required: true },
-    useByDate:  { type: String, required: true },
-    foodGroup:  { type: String },
-    calories:   { type: String },
-    DietaryReqs: {
-        type: String,
-        enum: [none, lactose-free, vegan, vegetarian],
-    }
-});
-const userSchema = mongoose.Schema({
-    username: { type: String, required: true},
-    password: { type: String, required: true},
-    foods: [foodSchema],
-});
-const user = mongoose.model('User', userSchema);
-module.exports = User;
+![alt text](image-3.png)
 
 These weren’t huge mistakes but they did serve to slow me down a fair bit while I debugged and amended them and drove home the importance of a tight and tidy Schema when building CRUD functionalities. Here is the amended code.
 
-
-const mongoose = require('mongoose');
-
-const foodSchema = new mongoose.Schema({
-    name:       { type: String, required: true },
-    amount:     { type: String, required: true },
-    useByDate:  { type: String, required: true },
-    foodGroup:  { type: String },
-    calories:   { type: String },
-    dietaryReqs: {
-        type: String,
-        enum: ['none', 'vegetarian', 'vegan', 'lactose-free', 'contains-nuts'],
-    }
-});
-
-const userSchema = mongoose.Schema({
-    username: { type: String, required: true},
-    password: { type: String, required: true},
-    foods: [foodSchema],
-});
-
-const User = mongoose.model('User', userSchema);
-
-module.exports = User;
+![alt text](image-4.png)
 
 
 Wins
@@ -151,77 +89,13 @@ Wins
 This was also my first time using CSS Bootstrap and it was easy to set up. While it was challenging to knit all of the design code around my ejs files, the end result looked really clean and responsive. I was however planning to add 
 some additional design elements using a custom.css file but I did not have time in the end.
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <title>Your Food</title>
-</head>
-<body class="bg-light">
-    <%- include('../partials/_navbar.ejs') %>
-    
-    <div class="container mt-5">
-        <h1 class="text-center text-info">Your Food</h1>
-        <div class="card mb-4" style="border-radius: 15px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);">
-            <div class="card-body">
-                <h5 class="card-title">Food Details</h5>
-                <p><strong>Name:</strong> <%= food.name %></p>
-                <p><strong>Amount:</strong> <%= food.amount %></p>
-                <p><strong>Use By Date:</strong> <%= food.useByDate %></p>
-                <p><strong>Food Group:</strong> <%= food.foodGroup %></p>
-                <p><strong>Calories:</strong> <%= food.calories %></p>
-                <p><strong>Dietary Requirements:</strong> <%= food.dietaryReqs %></p>
-                <div class="d-flex justify-content-between">
-                    <a href="/users/<%= user._id %>/foods/<%= food._id %>/edit" class="btn btn-primary btn-lg mr-2">Edit Food</a>
-                    <form action="/users/<%= user._id %>/foods/<%= food._id %>?_method=DELETE" method="POST" style="display:inline;">
-                        <button type="submit" class="btn btn-danger btn-lg">Delete Food</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-</body>
-</html>
-
+![alt text](image-5.png)
 
 The other part of the project I most enjoyed was adding passwordPattern to give my app an extra level of security by demanding more complex passwords from guests. This I feel mimics real world best practice.
 
+![alt text](image-7.png)
 
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/;
-
-router.post('/sign-up', async (req, res) => {
-    try {
-        const userInDatabase = await User.findOne({ username: req.body.username });
-        if (userInDatabase) {
-            return res.send('Username already taken.');
-    }
-
-    if (!passwordPattern.test(req.body.password)) {
-        return res.send('Password must be at least 8 characters long and contain an uppercase letter, a lowercase letter and a symbol.');
-    }
-
-    if (req.body.password !== req.body.confirmPassword) {
-        return res.send('Password and Confirm Password must match');
-    }
-
-    const hashedPassword = bcrypt.hashSync(req.body.password, 10);
-    req.body.password = hashedPassword;
-
-    await User.create(req.body);
-
-    res.redirect('/auth/sign-in');
-    } catch (error) {
-        console.log(error);
-        res.redirect('/');
-    }
-});
-
+![alt text](image-8.png)
 
 Key Learnings/Takeaways
 
