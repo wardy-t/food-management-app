@@ -1,15 +1,16 @@
 Thomas Ward
-General Assembly SEB Project 2 README
+General Assembly SEB Project 2 README - Freezy, A Food Management App
 
 Project Description
 
 Say hello to Freezy!
 
-![alt text](image.png)
+![image](https://github.com/user-attachments/assets/6dd25c93-ef6f-4da7-953f-d9a87921686b)
 
 Freezy is my food management app. It is designed to help you keep track of what food is in your fridge, when it is going out of date, what calories your food contains and more.
 
-![alt text](image-2.png)
+![image](https://github.com/user-attachments/assets/2283c201-e660-4399-a5a5-d6edcdf2887f)
+
 
 I built Freezy unassisted for Project 2 of my General Assembly Software Engineering Bootcamp, between 28/10/24 - 1/11/24 while also working full time. 
 The app demonstrates my ability to build an MVC style codebase with user authentication and CRUD functionalities while storing user data in MongoDB.
@@ -77,11 +78,11 @@ were probably not directly linked.
 Eventually I established that I had made two separate errors on the Schema - I had changed the ‘food’ object in my Schema to ‘name’ but had not amended this in parts of my code. Also I had made a classic capital letter typo in my 
 ‘dietary requirements’ object.
 
-![alt text](image-3.png)
+![image](https://github.com/user-attachments/assets/cadb415b-a650-4250-b279-048a51f96c05)
 
 These weren’t huge mistakes but they did serve to slow me down a fair bit while I debugged and amended them and drove home the importance of a tight and tidy Schema when building CRUD functionalities. Here is the amended code.
 
-![alt text](image-4.png)
+![image](https://github.com/user-attachments/assets/7cd3f862-25b3-4ddc-b8b2-9fcdec93e289)
 
 
 Wins
@@ -89,13 +90,14 @@ Wins
 This was also my first time using CSS Bootstrap and it was easy to set up. While it was challenging to knit all of the design code around my ejs files, the end result looked really clean and responsive. I was however planning to add 
 some additional design elements using a custom.css file but I did not have time in the end.
 
-![alt text](image-5.png)
+![image](https://github.com/user-attachments/assets/9c2a4976-4a69-494e-9aca-1d2bac3834e8)
+
 
 The other part of the project I most enjoyed was adding passwordPattern to give my app an extra level of security by demanding more complex passwords from guests. This I feel mimics real world best practice.
 
-![alt text](image-7.png)
+![image](https://github.com/user-attachments/assets/c517da67-4ff2-4c85-9338-c3a696a06c06)
+![image](https://github.com/user-attachments/assets/46c68ec8-ee47-41b3-80c4-4bb5d5e92703)
 
-![alt text](image-8.png)
 
 Key Learnings/Takeaways
 
