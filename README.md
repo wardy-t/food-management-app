@@ -41,37 +41,6 @@ dotenv
 Heroku
 GitHub
 
-Brief
-Technical requirements
-MVP
-✅ Any items marked incomplete in this section will require you to use your one redo to re-submit them. Your app must fulfill the below requirements.
-The app utilizes EJS Templates for rendering views to users.
-The app uses session-based authentication.
-The app’s files are organized following the conventions taught in lectures.
-The app has at least one data entity in addition to the User model. At least one entity must have a relationship with the User model.
-The app has full CRUD functionality.
-Authorization is implemented in the app. Guest users (those not signed in) should not be able to create, update, or delete data in the application or access functionality allowing those actions.
-The app is deployed online so that the rest of the world can use it.
-Code convention
-✅ More than two items marked incomplete in this section will require you to use your one redo to re-submit them. If two or fewer items are marked incomplete, the project is considered passing. Your app must fulfill the below requirements.
-The app runs without errors in both the terminal and the browser console.
-The code in the app adheres to coding conventions covered in lessons, like using plural names for arrays.
-The app follows RESTful routing conventions for routes.
-The app does not contain dead code, commented-out sections, or console logs.
-The app is coded using proper indentation.
-UI/UX
-✅ More than two items marked incomplete in this section will require you to use your one redo to re-submit them. If two or fewer items are marked incomplete, the project is considered passing. Your app must fulfill the below requirements.
-Your app exhibits a visual theme, like a consistent color palette and cohesive layout across pages.
-CSS Flexbox or Grid is utilized for page layout design.
-The site is easily navigable by a first-time user. For example, navigation should be done through links instead of having to type in a URL to navigate around the app.
-Colors used on the site have appropriate contrast, meeting WCAG 2.0 level AA standards.
-When editing an item, the form is pre-filled with that item’s details.
-Only the user who created data can see and interact with the UI for editing or deleting that data.
-All images on the site have alt text.
-No text is placed on top of an image in a way that makes the text inaccessible.
-All buttons are styled.
-
-
 Build/Code Process
 
 I started by downloading my required technologies middlewares through the terminal and then went about building my server.js and connecting to port. Most of the middlewares concerned aspects of authentication or connecting with my database. 
